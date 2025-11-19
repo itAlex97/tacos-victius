@@ -52,9 +52,9 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/admin.html'));
 });
 
-// Ruta principal - Index
+// Ruta principal - Index (redirige a pages/index.html)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../index.html'));
+    res.sendFile(path.join(__dirname, '../../pages/index.html'));
 });
 
 // Ruta de productos
