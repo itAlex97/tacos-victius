@@ -14,12 +14,14 @@ function guardarCarrito(cart) {
 
 function agregarAlCarrito(productId, quantity = 1) {
     const cart = obtenerCarrito();
-    const existingItem = cart.find(item => item.productId === productId);
+    // Convertir a string para comparación consistente
+    const id = String(productId);
+    const existingItem = cart.find(item => String(item.productId) === id);
     
     if (existingItem) {
         existingItem.quantity += quantity;
     } else {
-        cart.push({ productId, quantity });
+        cart.push({ productId: id, quantity });
     }
     
     guardarCarrito(cart);
@@ -27,7 +29,8 @@ function agregarAlCarrito(productId, quantity = 1) {
 
 function eliminarDelCarrito(productId) {
     let cart = obtenerCarrito();
-    cart = cart.filter(item => item.productId !== productId);
+    const id = String(productId);
+    cart = cart.filter(item => String(item.productId) !== id);
     guardarCarrito(cart);
     
     // Si estamos en la página de checkout, renderizar de nuevo
@@ -39,6 +42,18 @@ function eliminarDelCarrito(productId) {
 function limpiarCarrito() {
     localStorage.removeItem('cart');
     actualizarContadorCarrito();
+    
+    // Si estamos en checkout, renderizar
+    if (typeof renderCart === 'function') {
+        renderCart();
+    }
+}
+
+function resetearCarrito() {
+    if (confirm('¿Estás seguro de que quieres vaciar el carrito?')) {
+        limpiarCarrito();
+        alert('Carrito vaciado correctamente');
+    }
 }
 
 function calcularTotal() {
@@ -46,7 +61,7 @@ function calcularTotal() {
     let total = 0;
     
     cart.forEach(item => {
-        const product = productos.find(p => p.id === item.productId);
+        const product = productos.find(p => String(p.id) === String(item.productId));
         if (product) {
             total += product.price * item.quantity;
         }

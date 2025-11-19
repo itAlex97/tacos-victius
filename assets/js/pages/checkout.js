@@ -5,20 +5,24 @@
 function renderCart() {
     const cartItemsDiv = document.getElementById('cart-items');
     const emptyCartDiv = document.getElementById('empty-cart');
+    const clearCartBtn = document.getElementById('clear-cart-btn');
     const cart = obtenerCarrito();
     
     if (cart.length === 0) {
         cartItemsDiv.innerHTML = '';
         emptyCartDiv.style.display = 'block';
-        document.getElementById('paypal-button-container').innerHTML = '';
+        if (clearCartBtn) clearCartBtn.style.display = 'none';
+        const paypalContainer = document.getElementById('paypal-button-container');
+        if (paypalContainer) paypalContainer.innerHTML = '';
         return;
     }
     
     emptyCartDiv.style.display = 'none';
+    if (clearCartBtn) clearCartBtn.style.display = 'inline-block';
     let html = '';
     
     cart.forEach(item => {
-        const product = productos.find(p => p.id === item.productId);
+        const product = productos.find(p => String(p.id) === String(item.productId));
         if (product) {
             const itemTotal = product.price * item.quantity;
             html += `
@@ -36,14 +40,14 @@ function renderCart() {
                         </div>
                         <div class="col-md-2 mb-2 mb-md-0">
                             <div class="input-group input-group-sm">
-                                <button class="btn btn-outline-secondary" onclick="actualizarCantidad(${product.id}, ${item.quantity - 1})">-</button>
+                                <button class="btn btn-outline-secondary" onclick="actualizarCantidad('${product.id}', ${item.quantity - 1})">-</button>
                                 <input type="text" class="form-control text-center" value="${item.quantity}" readonly style="max-width: 50px;">
-                                <button class="btn btn-outline-secondary" onclick="actualizarCantidad(${product.id}, ${item.quantity + 1})">+</button>
+                                <button class="btn btn-outline-secondary" onclick="actualizarCantidad('${product.id}', ${item.quantity + 1})">+</button>
                             </div>
                         </div>
                         <div class="col-md-2 text-end">
                             <strong>$${itemTotal.toFixed(2)}</strong>
-                            <button class="btn btn-sm btn-outline-danger ms-2" onclick="eliminarDelCarrito(${product.id})">🗑️</button>
+                            <button class="btn btn-sm btn-outline-danger ms-2" onclick="eliminarDelCarrito('${product.id}')">🗑️</button>
                         </div>
                     </div>
                 </div>
@@ -70,7 +74,8 @@ function actualizarCantidad(productId, newQuantity) {
     if (newQuantity > 20) return;
     
     const cart = obtenerCarrito();
-    const item = cart.find(i => i.productId === productId);
+    const id = String(productId);
+    const item = cart.find(i => String(i.productId) === id);
     if (item) {
         item.quantity = newQuantity;
         guardarCarrito(cart);
@@ -97,7 +102,7 @@ function renderPayPalButton() {
         createOrder: function(data, actions) {
             const cart = obtenerCarrito();
             const items = cart.map(item => {
-                const product = productos.find(p => p.id === item.productId);
+                const product = productos.find(p => String(p.id) === String(item.productId));
                 return {
                     name: product.name,
                     unit_amount: {
