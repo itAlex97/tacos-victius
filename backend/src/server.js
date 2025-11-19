@@ -23,17 +23,11 @@ app.use(cors()); // Permitir CORS
 app.use(express.json()); // Parsear JSON
 app.use(express.urlencoded({ extended: true })); // Parsear URL-encoded
 
-// Servir archivos estáticos (Admin Dashboard)
-app.use('/admin-assets', express.static(path.join(__dirname, '../public')));
-
-// Servir archivos estáticos del Frontend (toda la aplicación)
-app.use(express.static(path.join(__dirname, '../../')));
-
-// Rutas de la API
+// Rutas de la API (antes de static para tener prioridad)
 app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
 
-// Ruta de prueba
+// Ruta de prueba API
 app.get('/api', (req, res) => {
     res.json({
         success: true,
@@ -47,7 +41,13 @@ app.get('/api', (req, res) => {
     });
 });
 
-// Ruta para el Admin Dashboard
+// Servir archivos estáticos del admin
+app.use('/admin-static', express.static(path.join(__dirname, '../public')));
+
+// Servir archivos estáticos del Frontend
+app.use(express.static(path.join(__dirname, '../../')));
+
+// Ruta para el Admin Dashboard (debe estar después de static)
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/admin.html'));
 });
