@@ -11,17 +11,23 @@
     "dev": "nodemon src/server.js",
     "seed": "node src/seed.js"
   },
-  "keywords": ["express", "mongodb", "api", "tacos"],
+  "keywords": [
+    "express",
+    "mongodb",
+    "api",
+    "tacos"
+  ],
   "author": "Tacos Victius",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^8.0.3",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.2",
-    "express-validator": "^7.0.1"
+    "mongoose": "^8.0.3",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

@@ -11,6 +11,7 @@ const connectDB = require('./config/database');
 // Importar rutas
 const productRoutes = require('./routes/productRoutes');
 const authRoutes = require('./routes/authRoutes');
+const utilityRoutes = require('./routes/utilityRoutes');
 
 // Inicializar Express
 const app = express();
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true })); // Parsear URL-encoded
 // Rutas de la API (antes de static para tener prioridad)
 app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/utils', utilityRoutes);
 
 // Ruta de prueba API
 app.get('/api', (req, res) => {
