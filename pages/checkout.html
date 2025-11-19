@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Tacos Victius</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AZn954yotacFl2oUYB8bnGwE0WoD2eizkFEjsRUdtdfNVxq9fnXjou8DpjkxAxfbtUBJ8mZFlTIxRKQU&currency=MXN"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🌮 Tacos Victius</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="checkout.html">Carrito <span id="cart-count" class="badge bg-light text-dark">0</span></a></li>
+                </ul>
+                <div class="ms-3">
+                    <div id="g_id_onload"
+                         data-client_id="779089677765-5nskol629j4fpa35l9n184o181sbkkgj.apps.googleusercontent.com"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleCredentialResponse"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-size="medium"
+                         data-theme="outline"
+                         data-text="sign_in_with"
+                         data-shape="rectangular">
+                    </div>
+                    <div id="user-info" class="d-flex align-items-center text-white" style="display: none !important;"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-dark text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Tu Carrito</h1>
+            <p class="lead">Revisa tu pedido y procede al pago</p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="mb-4">Productos</h3>
+                        <div id="cart-items">
+                            <!-- Items del carrito se cargan aquí -->
+                        </div>
+                        <div id="empty-cart" class="empty-cart" style="display: none;">
+                            <div class="fs-1 mb-3">🛒</div>
+                            <h4>Tu carrito está vacío</h4>
+                            <p class="text-muted">Agrega productos desde nuestro menú</p>
+                            <a href="productos.html" class="btn btn-primary mt-3" style="background-color: var(--primary-color); border: none;">Ver Productos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
+                    <div class="card-body">
+                        <h3 class="mb-4">Resumen</h3>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00 MXN</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Envío:</span>
+                            <span class="text-success">Gratis</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-4">
+                            <strong class="h5">Total:</strong>
+                            <strong class="h5" id="total" style="color: var(--primary-color);">$0.00 MXN</strong>
+                        </div>
+                        
+                        <div id="paypal-button-container"></div>
+                        
+                        <div class="text-center mt-3">
+                            <small class="text-muted">Pago seguro con PayPal</small>
+                        </div>
+                        
+                        <a href="productos.html" class="btn btn-outline-secondary w-100 mt-3">Seguir Comprando</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">🌮 Tacos Victius</h5>
+                    <p class="small">Auténtico sabor oaxaqueño desde 2020. Tradición, calidad y pasión en cada bocado.</p>
+                    <p class="small mt-3"><strong>Misión:</strong> Llevar la auténtica gastronomía oaxaqueña a cada mesa, preservando nuestras tradiciones culinarias.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">🏠 Inicio</a></li>
+                        <li class="mb-2"><a href="productos.html" class="text-white-50 text-decoration-none">🍽️ Productos</a></li>
+                        <li class="mb-2"><a href="checkout.html" class="text-white-50 text-decoration-none">🛒 Carrito</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">📖 Nuestra Historia</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">💼 Trabaja con Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 small">📍 Av. Fuerza Aérea Mexicana<br>Antiguo Aeropuerto<br>68050 Oaxaca de Juárez, Oax.</li>
+                        <li class="mb-2 small">📞 <a href="tel:+529511234567" class="text-white-50 text-decoration-none">(951) 123 4567</a></li>
+                        <li class="mb-2 small">📱 <a href="https://wa.me/529511234567" class="text-white-50 text-decoration-none">WhatsApp: 951 123 4567</a></li>
+                        <li class="mb-2 small">✉️ <a href="mailto:info@tacosvictius.com" class="text-white-50 text-decoration-none">info@tacosvictius.com</a></li>
+                        <li class="mb-2 small">🕒 Lun-Dom: 10:00 AM - 10:00 PM</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Síguenos</h5>
+                    <div class="d-flex flex-column gap-2 mb-3">
+                        <a href="#" class="text-white-50 text-decoration-none" onclick="compartirFacebook(); return false;">📘 Facebook</a>
+                        <a href="#" class="text-white-50 text-decoration-none" onclick="compartirInstagram(); return false;">📸 Instagram</a>
+                        <a href="#" class="text-white-50 text-decoration-none" onclick="compartirTwitter(); return false;">🐦 Twitter</a>
+                    </div>
+                    <div class="mt-4">
+                        <h6 class="fw-bold mb-2">Métodos de Pago</h6>
+                        <p class="small text-white-50">💳 Tarjetas de crédito y débito<br>💵 Efectivo<br>📱 Transferencias bancarias</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center border-top border-secondary pt-4 mt-4">
+                <small>&copy; 2025 Tacos Victius. Hecho con ❤️ en Oaxaca. Todos los derechos reservados.</small><br>
+                <small class="text-white-50 mt-2 d-block"><a href="#" class="text-white-50 text-decoration-none">Política de Privacidad</a> | <a href="#" class="text-white-50 text-decoration-none">Términos y Condiciones</a></small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/data/productos.js"></script>
+    <script src="../assets/js/modules/cart.js"></script>
+    <script src="../assets/js/modules/auth.js"></script>
+    <script src="../assets/js/pages/checkout.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>

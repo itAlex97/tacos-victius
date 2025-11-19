@@ -1,0 +1,18 @@
+{
+  "name": "tacos-victius-fullstack",
+  "version": "1.0.0",
+  "description": "Aplicación Full Stack - Tacos Victius",
+  "main": "backend/src/server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "cd backend && node src/server.js",
+    "dev": "cd backend && nodemon src/server.js",
+    "seed": "cd backend && node src/seed.js",
+    "install-backend": "cd backend && npm install"
+  },
+  "keywords": ["tacos", "restaurant", "fullstack", "mongodb"],
+  "author": "Tacos Victius",
+  "license": "MIT"
+}

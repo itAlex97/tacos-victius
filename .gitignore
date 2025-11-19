@@ -1,0 +1,37 @@
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Archivos temporales
+*.log
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# Node modules (si se agregan en el futuro)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Archivos de respaldo
+*.old
+backup/
+
+# Configuración local (no compartir keys)
+config.local.js
+
+# Carpeta de archivos antiguos
+old/

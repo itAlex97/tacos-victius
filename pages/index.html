@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tacos Victius - Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">🌮 Tacos Victius</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="checkout.html">Carrito <span id="cart-count" class="badge bg-light text-dark">0</span></a></li>
+                </ul>
+                <div class="ms-3">
+                    <div id="g_id_onload"
+                         data-client_id="779089677765-5nskol629j4fpa35l9n184o181sbkkgj.apps.googleusercontent.com"
+                         data-context="signin"
+                         data-ux_mode="popup"
+                         data-callback="handleCredentialResponse"
+                         data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin"
+                         data-type="standard"
+                         data-size="medium"
+                         data-theme="outline"
+                         data-text="sign_in_with"
+                         data-shape="rectangular">
+                    </div>
+                    <div id="user-info" class="d-flex align-items-center text-white" style="display: none !important;"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Tacos Victius</h1>
+            <p class="lead fs-4">Auténtico Sabor Oaxaqueño</p>
+            <p class="fs-5">¡No aceptes imitaciones, ven por el original!</p>
+            <a href="productos.html" class="btn btn-warning btn-lg mt-3">Ver Menú</a>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row text-center mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="fs-1 mb-3">🌮</div>
+                        <h3 class="h5">Recetas Tradicionales</h3>
+                        <p class="text-muted">Preparados con recetas auténticas de Oaxaca transmitidas por generaciones.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="fs-1 mb-3">🥑</div>
+                        <h3 class="h5">Ingredientes Frescos</h3>
+                        <p class="text-muted">Utilizamos solo ingredientes frescos y de la más alta calidad.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card feature-card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <div class="fs-1 mb-3">⚡</div>
+                        <h3 class="h5">Servicio Rápido</h3>
+                        <p class="text-muted">Ordena en línea y recoge tu pedido en minutos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12 mb-4">
+                <h2 class="mb-4">Nuestra Historia</h2>
+                <p>Desde 2020, Tacos Victius ha sido el punto de referencia para quienes buscan el auténtico sabor oaxaqueño en la ciudad. Nuestro compromiso es llevar las tradiciones culinarias de Oaxaca a tu mesa, elaborando cada platillo con dedicación y respeto por las recetas originales.</p>
+                <p>Cada taco, cada tlayuda, cada mezcal que servimos cuenta una historia de tradición, familia y amor por la gastronomía mexicana.</p>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12 mb-4">
+                <div class="ratio ratio-16x9">
+                    <iframe 
+                        src="https://www.youtube.com/embed/mC3akPsrpGM?si=yeKjYppdrOk8BIZd" 
+                        title="Video de Tacos" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12 mb-4">
+                <h2 class="mb-4">Visítanos</h2>
+                <p><strong>Dirección:</strong><br>
+                Av. Fuerza Aérea Mexicana<br>
+                Antiguo Aeropuerto<br>
+                68050 Oaxaca de Juárez, Oax.</p>
+                <p><strong>Horario:</strong><br>
+                Lunes a Domingo: 10:00 AM - 10:00 PM</p>
+                <p><strong>Teléfono:</strong> <a href="tel:+529511234567">(951) 123 4567</a><br>
+                <strong>WhatsApp:</strong> <a href="https://wa.me/529511234567">951 123 4567</a></p>
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-12 mb-4">
+                <div id="map-container">
+                    <div id="map" aria-label="Mapa de ubicación de Tacos Victius"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="mb-4">Contáctanos</h2>
+                        <form id="contact-form">
+                            <div class="mb-3">
+                                <label for="from_name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="from_name" name="from_name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reply_to" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="reply_to" name="reply_to" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="background-color: var(--primary-color); border: none;">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">🌮 Tacos Victius</h5>
+                    <p class="small">Auténtico sabor oaxaqueño desde 2020. Tradición, calidad y pasión en cada bocado.</p>
+                    <p class="small mt-3"><strong>Misión:</strong> Llevar la auténtica gastronomía oaxaqueña a cada mesa, preservando nuestras tradiciones culinarias.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">🏠 Inicio</a></li>
+                        <li class="mb-2"><a href="productos.html" class="text-white-50 text-decoration-none">🍽️ Productos</a></li>
+                        <li class="mb-2"><a href="checkout.html" class="text-white-50 text-decoration-none">🛒 Carrito</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">📖 Nuestra Historia</a></li>
+                        <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">💼 Trabaja con Nosotros</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Contacto</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2 small">📍 Av. Fuerza Aérea Mexicana<br>Antiguo Aeropuerto<br>68050 Oaxaca de Juárez, Oax.</li>
+                        <li class="mb-2 small">📞 <a href="tel:+529511234567" class="text-white-50 text-decoration-none">(951) 123 4567</a></li>
+                        <li class="mb-2 small">📱 <a href="https://wa.me/529511234567" class="text-white-50 text-decoration-none">WhatsApp: 951 123 4567</a></li>
+                        <li class="mb-2 small">✉️ <a href="mailto:info@tacosvictius.com" class="text-white-50 text-decoration-none">info@tacosvictius.com</a></li>
+                        <li class="mb-2 small">🕒 Lun-Dom: 10:00 AM - 10:00 PM</li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3">Síguenos</h5>
+                    <div class="d-flex flex-column gap-2 mb-3">
+                        <a href="#" class="text-white-50 text-decoration-none" onclick="compartirFacebook(); return false;">📘 Facebook</a>
+                        <a href="#" class="text-white-50 text-decoration-none" onclick="compartirInstagram(); return false;">📸 Instagram</a>
+                        <a href="#" class="text-white-50 text-decoration-none" onclick="compartirTwitter(); return false;">🐦 Twitter</a>
+                    </div>
+                    <div class="mt-4">
+                        <h6 class="fw-bold mb-2">Métodos de Pago</h6>
+                        <p class="small text-white-50">💳 Tarjetas de crédito y débito<br>💵 Efectivo<br>📱 Transferencias bancarias</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center border-top border-secondary pt-4 mt-4">
+                <small>&copy; 2025 Tacos Victius. Hecho con ❤️ en Oaxaca. Todos los derechos reservados.</small><br>
+                <small class="text-white-50 mt-2 d-block"><a href="#" class="text-white-50 text-decoration-none">Política de Privacidad</a> | <a href="#" class="text-white-50 text-decoration-none">Términos y Condiciones</a></small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/data/productos.js"></script>
+    <script src="../assets/js/modules/cart.js"></script>
+    <script src="../assets/js/modules/auth.js"></script>
+    <script src="../assets/js/modules/contact.js"></script>
+    <script src="../assets/js/modules/map.js"></script>
+    <script src="../assets/js/modules/social.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
