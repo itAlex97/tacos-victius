@@ -2,7 +2,11 @@
 // DATOS DE PRODUCTOS - INTEGRACIÓN CON API
 // ==========================================
 
-const API_URL = 'http://localhost:3000/api';
+// Detectar automáticamente si estamos en producción o desarrollo
+const API_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:5001/api'
+    : `${window.location.origin}/api`;
+
 let productos = [];
 
 // Cargar productos desde la API

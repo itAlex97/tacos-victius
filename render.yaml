@@ -1,0 +1,19 @@
+# Render Blueprint
+
+services:
+  - type: web
+    name: tacos-victius
+    runtime: node
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        generateValue: false
+      - key: JWT_SECRET
+        generateValue: false
